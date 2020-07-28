@@ -47,3 +47,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Securing .env
 gem 'dotenv-rails', groups: [:development, :test]
+
+gem 'pry'
+
+gem 'rest-client'
