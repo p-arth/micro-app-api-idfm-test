@@ -1,11 +1,13 @@
 require 'json'
 require 'pry'
 require 'rest-client'
-require 'uri'
 require 'active_support/all'
 
 class ResponsesController < ApplicationController
   before_action :set_response, only: [:show, :update, :destroy]
+
+
+
 
   # GET /responses
   def index
@@ -24,23 +26,23 @@ class ResponsesController < ApplicationController
     result = JSON.parse(result)
 
     token = result['access_token']
-    binding.pry
+    # binding.pry
 
     apiUrl = 'https://traffic.api.iledefrance-mobilites.fr/v1/tr-global/estimated-timetable'
 
-    apiData = {
-      LineRef: 'ALL'
-    }
-
     apiHeaders = {
-      'Accept-Encoding': '',
+      'Accept-Encoding': 'gzip',
       'Authorization': 'Bearer ' + token
     }
 
     finalResult = RestClient.get( apiUrl, headers = apiHeaders )
-    binding.pry
-    jsonData = JSON.parse(finalResult)
-    binding.pry
+    # binding.pry
+    jsonData = JSON.parse(ActiveSupport::Gzip.decompress(finalResult))
+    # binding.pry
+
+    time = Time.now
+
+    File.write("public/#{time}.json", jsonData)
 
     @response = Response.new(response_params)
 
