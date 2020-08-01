@@ -55,3 +55,7 @@ gem 'rest-client'
 
 # Amazong uploading
 gem 'aws-sdk', '~> 3'
+
+# CRON
+gem 'whenever', require: false
+# gem 'rufus-scheduler'
