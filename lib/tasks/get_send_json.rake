@@ -43,7 +43,7 @@ task :get_send_json do
     file_location = File.open("tmp/storage/#{file_name}.json")
 
     puts "Sending json file to storage..."
-    profile_name = 'p-arth'
+    profile_name = ENV['PROFILE_NAME']
     region = ENV['AWS_REGION']
     bucket = ENV['S3_BUCKET']
 
