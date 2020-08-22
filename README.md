@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Rails API app that, every 5 minutes, do the following:
 
-Things you may want to cover:
+* Authenticate an API key access
 
-* Ruby version
+* Send a request to an API
 
-* System dependencies
+* Get a response and save it in JSON format
 
-* Configuration
+* Send the JSON file obtained to an online storage
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Delete the JSON file stored locally
