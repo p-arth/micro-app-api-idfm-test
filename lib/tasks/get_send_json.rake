@@ -8,7 +8,7 @@ desc "Getting json response from api & sending it to AWS."
 
 task :get_send_json do
     puts "Getting access token..."
-    urlOAuth = 'https://as.api.iledefrance-mobilites.fr/api/oauth/token'
+    urlOAuth = ENV['URL_AUTH']
     client_id = ENV['CLIENT_ID']
     client_secret = ENV['CLIENT_SECRET']
 
@@ -25,7 +25,7 @@ task :get_send_json do
     token = result['access_token']
     puts "Access token received, now requesting json response..."
     
-    api_url = 'https://traffic.api.iledefrance-mobilites.fr/v1/tr-global/estimated-timetable'
+    api_url = ENV['API_URL']
 
     api_headers = {
       'Accept-Encoding': 'gzip',
