@@ -39,7 +39,7 @@ task :daily_json do
     day = Time.now.strftime('%Y-%m-%d')
 
     puts "Starting daily file..."
-    File.write("tmp/storage/#{day}-daily.json", json_data)
+    File.write("tmp/storage/#{day}-daily.json", json_data.to_json)
 
     puts 'Done!'
 

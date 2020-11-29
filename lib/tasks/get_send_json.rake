@@ -39,7 +39,7 @@ task :get_send_json do
     file_name = time
 
     puts "Writing json file..."
-    File.write("tmp/storage/#{file_name}.json", json_data)
+    File.write("tmp/storage/#{file_name}.json", json_data.to_json)
     file_location = File.open("tmp/storage/#{file_name}.json")
 
     puts "Sending json file to storage..."
@@ -51,5 +51,14 @@ task :get_send_json do
 
     s3.put_object(bucket: bucket, key: "#{file_name}.json", body: file_location)
     puts "Done!"
+
+    # Update daily file
+    # puts "Updating daily file..."
+
+    # day = Time.now.strftime('%Y-%m-%d')
+    # daily_file_location = File.open("tmp/storage/#{day}-daily.json")
+
+    # daily_file = JSON.parse(ActiveSupport::Gzip.decompress(daily_file_location))
+    # puts daily_file('Siri')('ServiceDelivery')('EstimatedTimetableDelivery')[0]('EstimatedJourneyVersionFrame')[0]('EstimatedVehicleJourney')[0]('RecordedAtTime')
 
 end
