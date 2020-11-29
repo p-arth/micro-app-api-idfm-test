@@ -57,8 +57,14 @@ task :get_send_json do
 
     # day = Time.now.strftime('%Y-%m-%d')
     # daily_file_location = File.open("tmp/storage/#{day}-daily.json")
+    # daily_file = JSON.parse(daily_file_location)
 
-    # daily_file = JSON.parse(ActiveSupport::Gzip.decompress(daily_file_location))
-    # puts daily_file('Siri')('ServiceDelivery')('EstimatedTimetableDelivery')[0]('EstimatedJourneyVersionFrame')[0]('EstimatedVehicleJourney')[0]('RecordedAtTime')
+    # daily_journey_record = Time.parse(daily_file['Siri']['ServiceDelivery']['EstimatedTimetableDelivery'][0]['EstimatedJourneyVersionFrame'][0]['EstimatedVehicleJourney'][0]['RecordedAtTime'])
+    # single_journey_record = Time.parse(json_data['Siri']['ServiceDelivery']['EstimatedTimetableDelivery'][0]['EstimatedJourneyVersionFrame'][0]['EstimatedVehicleJourney'][0]['RecordedAtTime'])
+    
+    # if single_journey_record > daily_journey_record
+
+    # identificar VehicleJourney por LineRef
+
 
 end
