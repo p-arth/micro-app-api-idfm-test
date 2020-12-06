@@ -55,7 +55,7 @@ task :get_send_json do
     puts "Updating daily file..."
 
     day = Time.now.strftime('%Y-%m-%d')
-    daily_file_location = File.open("tmp/storage/#{day}-daily.json")
+    daily_file_location = File.read("tmp/storage/#{day}-daily.json")
     daily_file = JSON.parse(daily_file_location)
     single_file_location = File.read("tmp/storage/#{file_name}.json")
     single_file = JSON.parse(single_file_location)
