@@ -86,6 +86,17 @@ task :test_json do
     end
 
     puts "Updating daily file..."
+
+    daily_file['Siri']['ServiceDelivery']['EstimatedTimetableDelivery'][0]['EstimatedJourneyVersionFrame'][0]['EstimatedVehicleJourney'].sort_by! { |k| k['OperatorRef']['value'].to_s }
+    daily_file['Siri']['ServiceDelivery']['EstimatedTimetableDelivery'][0]['EstimatedJourneyVersionFrame'][0]['EstimatedVehicleJourney'].sort_by! { |k| k['LineRef']['value'].to_s }
+    daily_file['Siri']['ServiceDelivery']['EstimatedTimetableDelivery'][0]['EstimatedJourneyVersionFrame'][0]['EstimatedVehicleJourney'].sort_by! { |k| k['DirectionRef']['value'].to_s }
+    daily_file['Siri']['ServiceDelivery']['EstimatedTimetableDelivery'][0]['EstimatedJourneyVersionFrame'][0]['EstimatedVehicleJourney'].sort_by! { |k| k['DestinationRef']['value'].to_s }
+    daily_file['Siri']['ServiceDelivery']['EstimatedTimetableDelivery'][0]['EstimatedJourneyVersionFrame'][0]['EstimatedVehicleJourney'].sort_by! { |k| k['EstimatedCalls']['EstimatedCall'][0]['AimedDepartureTime'].to_s }
+
+    puts "Sorting daily file..."
+
     File.write("tmp/storage/2020-11-29-daily.json", daily_file.to_json)
+
+    puts "Saved daily file!"
     
 end
